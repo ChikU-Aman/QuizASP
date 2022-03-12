@@ -1,0 +1,50 @@
+﻿@model IEnumerable<QUIZ.Models.Question>
+
+@{
+    int count = 1;
+    ViewData["Title"] = "Home Page";
+}
+<script>
+    $(document).ready(function () {
+        $("#b1").click(function () {
+            $(".rb").show();
+            $(".rb").attr("disabled", true);
+        });
+    });
+</script>
+
+<div class="container">
+    <h1 class="text-danger mt-3">Simple Quiz App</h1>
+    <hr>
+    <div>
+        @foreach (var item in Model)
+        {
+            <table>
+                <tr>
+                    <td class="text-primary">@count)  @item.QuestionName</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" class="rb" name="@item.Id" id="Option1" value="@item.Option1"> @item.Option1</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" class="rb" name="@item.Id" id="Option2" value="@item.Option2"> @item.Option2</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" class="rb" name="@item.Id" id="Option3" value="@item.Option3"> @item.Option3</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" class="rb" name="@item.Id" id="Option4" value="@item.Option4"> @item.Option4</td>
+                </tr>
+                <tr>
+                    <td><label id="corans" class="rb" style="display:none ; color : green"><b></b>@item.CorrectAnswer</label></td>
+                </tr>
+            </table><hr>
+            @if(true){ 
+                count++;
+            }
+        }
+        <input type="submit" class="btn btn-success" value="Submit" id="b1" onclick="getanswers()">
+        <br>
+        <b id="UserAnswers"></b>
+    </div>
+</div>
